@@ -1,0 +1,67 @@
+// set value
+  Firebase.setFloat("number", 42.0);
+  // handle error
+  if (Firebase.failed()) {
+      Serial.print("setting /number failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  delay(1000);
+  
+  // update value
+  Firebase.setFloat("number", 43.0);
+  // handle error
+  if (Firebase.failed()) {
+      Serial.print("setting /number failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  delay(1000);
+
+  // get value 
+  Serial.print("number: ");
+  Serial.println(Firebase.getFloat("number"));
+  delay(1000);
+
+  // remove value
+  Firebase.remove("number");
+  delay(1000);
+
+  // set string value
+  Firebase.setString("message", "hello world");
+  // handle error
+  if (Firebase.failed()) {
+      Serial.print("setting /message failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  delay(1000);
+  
+  // set bool value
+  Firebase.setBool("truth", false);
+  // handle error
+  if (Firebase.failed()) {
+      Serial.print("setting /truth failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  delay(1000);
+
+  // append a new value to /logs
+  String name = Firebase.pushInt("logs", n++);
+  // handle error
+  if (Firebase.failed()) {
+      Serial.print("pushing /logs failed:");
+      Serial.println(Firebase.error());  
+      return;
+  }
+  Serial.print("pushed: /logs/");
+  Serial.println(name);
+  delay(1000);
+
+
+
+//outra parada
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+https://dl.espressif.com/dl/package_esp32_index.json
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
